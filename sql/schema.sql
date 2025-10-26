@@ -1,5 +1,5 @@
--- Phase 1: Supabase Backend Setup
--- 1.1. Database Schema
+-- 48 Hauling Database Schema
+-- Core tables for hauling operations
 
 -- profiles table
 CREATE TABLE profiles (

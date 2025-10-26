@@ -1,6 +1,6 @@
 /**
  * DevCollective API Client for 48 Hauling
- * Professional API integration replacing Supabase
+ * Professional REST API integration
  */
 
 import type {
