@@ -1,241 +1,166 @@
-# Delivery API Hub 
+# 48 Hauling Web Panel
 
-Central API hub serving as the backend for:
-- **Mobile App** (Android/iOS) - For delivery drivers
-- **Web Admin Panel** - For management and monitoring
+Complete logistics and fleet management web application for hauling operations.
 
-##  Project Structure
+## 🚀 Features
 
-```
-api/
-├── supabase/
-│   ├── functions/          # Edge Functions (API endpoints)
-│   │   ├── _shared/        # Shared utilities (CORS, auth, rate limiting)
-│   │   ├── heartbeat/      # Keep-alive endpoint
-│   │   ├── log-error/      # Error reporting
-│   │   ├── report-issue/   # User feedback
-│   │   ├── check-app-version/
-│   │   ├── get-optimized-route/
-│   │   ├── update-job-status/
-│   │   ├── create-job/
-│   │   ├── assign-job/
-│   │   ├── get-users/
-│   │   ├── update-user-role/
-│   │   ├── track-analytics/
-│   │   ├── get-dashboard-stats/
-│   │   └── submit-payroll/
-│   └── migrations/         # Database schema migrations
-│       ├── 20250101000000_initial_schema.sql
-│   │   ├── 20250101000001_seed_data.sql
-│       └── 20250101000002_realtime_config.sql
-├── web-panel/             # Next.js admin dashboard
-│   ├── src/
-│   │   ├── app/          # Next.js app directory
-│   │   ├── components/   # React components
-│   │   └── lib/         # Utilities (Supabase client, realtime)
-│   └── package.json
-├── mobile-sdk/           # Client libraries for mobile apps
-│   ├── kotlin/          # Android (Kotlin)
-│   ├── typescript/      # React Native
-│   └── README.md        # Mobile SDK documentation
-├── API_ENDPOINTS.md     # Complete API reference
-├── DEPLOYMENT.md        # Deployment guide
-└── README.md           # This file
-```
+### Core Business Features
+- **Loads Management** - Create, assign, and track deliveries with pickup/delivery details
+- **Driver Management** - Manage driver profiles, licenses, and vehicle assignments
+- **DVIR Reports** - Digital Vehicle Inspection Reports with signature capture
+- **BOL Documents** - Bill of Lading document viewer and management
+- **Messaging & Announcements** - Admin-driver communication system
+- **GPS Tracking** - Real-time location tracking with route history
+- **Analytics** - Performance metrics, revenue tracking, and driver statistics
+- **Settings** - Application configuration and preferences
 
-##  Features
-
-### Core Functionality
-- ✅ User authentication (Supabase Auth)
-- ✅ Job management (create, assign, track)
-- ✅ Real-time updates (WebSocket)
-- ✅ Error reporting & logging
-- ✅ User issue tracking
-- ✅ Analytics tracking
-- ✅ Route optimization (Google Maps)
-- ✅ Time tracking & payroll
-- ✅ Version management
-- ✅ Rate limiting
-- ✅ CORS security
-
-### Admin Dashboard
-- 📊 Live device status monitoring
-- 📝 Error logs with search/filter
-- 🐛 User issue management
-- 👥 User management
-- 📈 Analytics dashboard
-- 💰 Payroll processing
-
-### Mobile SDK
-- 📱 Easy integration
-- 🔄 Automatic heartbeat
-- 🔍 Error tracking
-- 📍 Route optimization
-- ⏱️ Time tracking
-- 📊 Analytics
-
-## 🗄️ Database Schema
-
-### Core Tables
-- **profiles** - User profiles (admin, driver, user)
-- **jobs** - Delivery jobs with status tracking
-- **time_logs** - Driver work hours
-- **device_status** - Online/offline tracking
-- **error_logs** - Application errors
-- **reported_issues** - User feedback
-- **app_versions** - Version control
-- **analytics_events** - Usage metrics
-
-## 📚 Documentation
-
-- **[API Endpoints](./API_ENDPOINTS.md)** - Complete API reference
-- **[Deployment Guide](./DEPLOYMENT.md)** - Step-by-step deployment
-- **[Mobile SDK](./mobile-sdk/README.md)** - Mobile integration guide
+### Technical & Monitoring
+- **Audit Logs** - Complete activity tracking for compliance
+- **Database Management** - SQL query executor and schema browser
+- **Live Device Status** - Monitor driver connectivity in real-time
+- **Error Logs** - Application error tracking and debugging
+- **User Issues** - Issue reporting and resolution system
+- **API Observability** - Monitor API health and performance
 
 ## 🛠️ Tech Stack
 
-- **Backend**: Supabase (PostgreSQL + Edge Functions)
-- **Admin Panel**: Next.js 15, React 19, TypeScript, Tailwind CSS
-- **Real-time**: Supabase Realtime (WebSockets)
-- **Auth**: Supabase Auth
-- **External APIs**: Google Maps, QuickBooks
+- **Frontend**: Next.js 15, React 19, TypeScript
+- **Styling**: TailwindCSS
+- **Icons**: Lucide React
+- **Backend**: DevAPI REST API (15+ endpoints)
+- **Database**: PostgreSQL
+- **Maps**: Leaflet with OpenStreetMap
+- **Authentication**: JWT tokens via DevAPI
+
+## 📋 Project Structure
+
+```
+api-main/
+├── web-panel/              # Next.js application
+│   ├── src/
+│   │   ├── app/           # App router pages
+│   │   ├── components/    # React components
+│   │   ├── lib/          # DevAPI client & utilities
+│   │   └── types/        # TypeScript definitions
+│   ├── public/           # Static assets
+│   └── package.json
+├── sql/                  # Database schemas
+└── README.md
+```
 
 ## 🏃 Quick Start
 
-### 1. Clone & Install
+### 1. Installation
 
 ```bash
-git clone <your-repo>
-cd api
-
-# Install web panel dependencies
-cd web-panel
+git clone https://github.com/48hauling/webpanel.git
+cd webpanel/web-panel
 npm install
 ```
 
-### 2. Set up Environment Variables
+### 2. Environment Setup
 
 Create `web-panel/.env.local`:
+
 ```env
-NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+NEXT_PUBLIC_API_URL=https://api.azdevops.io/api
 ```
 
-### 3. Run Locally
+### 3. Run Development Server
 
 ```bash
-# Start web panel
-cd web-panel
 npm run dev
-# Opens at http://localhost:3000
 ```
 
-### 4. Deploy to Supabase
+Open [http://localhost:3000](http://localhost:3000)
 
-See [DEPLOYMENT.md](./DEPLOYMENT.md) for complete deployment instructions.
+## 🌐 API Integration
 
-```bash
-# Install Supabase CLI
-npm install -g supabase
+The web panel integrates with **DevAPI** - a custom Node.js/Express REST API.
 
-# Login
-supabase login
+**API Endpoints**: See [API_ENDPOINTS.md](./API_ENDPOINTS.md)
+**API Documentation**: https://www.azdevops.io
 
-# Link project
-supabase link --project-ref YOUR_PROJECT_REF
+All API requests use JWT Bearer token authentication.
 
-# Run migrations
-supabase db push
+## 🔐 Authentication
 
-# Deploy functions
-supabase functions deploy
-```
+1. Login at `/login` with admin credentials
+2. JWT token stored in cookies
+3. Token validated on each API request
+4. Auto-logout on token expiration
 
-##  Security Features
+## 📊 Key Components
 
-- Row Level Security (RLS) on all tables
-- JWT-based authentication
-- Rate limiting (60 req/min default)
-- CORS configuration
-- Service role key for admin operations
-- Encrypted secrets
+### Business Components
+- `LoadsManagement` - Job creation and tracking
+- `DriverManagement` - Driver CRUD operations
+- `DvirManagement` - Vehicle inspection forms
+- `BolViewer` - Document management
+- `MessagingTab` - Communication system
+- `GpsTracking` - Live map view
+- `AnalyticsTab` - Business metrics
 
-## 📊 Monitoring
+### Technical Components
+- `DatabaseManagement` - SQL query interface
+- `AuditLogsTab` - Activity tracking
+- `LiveStatusTab` - Device monitoring
+- `ErrorLogsTab` - Error management
+- `SettingsTab` - Configuration panel
 
-Access via Supabase Dashboard:
-- **Database**: Monitor queries, performance
-- **Auth**: User signups, logins
-- **Functions**: Invocations, errors, logs
-- **Realtime**: Active connections
+## 🚀 Deployment
 
-## 🧪 Testing
+### Vercel Deployment
 
-### Test API Endpoints
-
-```bash
-# Test heartbeat
-curl -X POST https://YOUR_PROJECT.supabase.co/functions/v1/heartbeat \
-  -H "Authorization: Bearer YOUR_JWT" \
-  -H "Content-Type: application/json" \
-  -d '{"app_type":"mobile"}'
-```
-
-### Test Admin Panel
-
-1. Create admin user in Supabase Auth
-2. Promote to admin:
-   ```sql
-   UPDATE profiles SET role = 'admin' WHERE email = 'admin@example.com';
+1. Connect GitHub repository to Vercel
+2. Set environment variables in Vercel dashboard:
    ```
-3. Login at your deployed URL
+   NEXT_PUBLIC_API_URL=https://api.azdevops.io/api
+   ```
+3. Deploy automatically on push to `main`
+
+### Production Checklist
+
+- [ ] Environment variables configured
+- [ ] DevAPI backend running at production URL
+- [ ] Database schema deployed
+- [ ] Admin user created
+- [ ] SSL certificates valid
+- [ ] CORS configured for production domain
+
+## 📝 Database Schema
+
+See `/sql/` directory for complete PostgreSQL schemas:
+
+- `schema.sql` - Core tables (jobs, drivers, locations)
+- `audit_logs_table.sql` - Audit trail
+- Additional migration files for specific features
+
+## 🔒 Security Features
+
+- JWT-based authentication
+- Role-based access control (Admin/Driver/User)
+- Audit logging on all actions
+- SQL injection protection
+- XSS prevention
+- CORS configuration
+- Rate limiting on DevAPI
+
+## 📚 Documentation
+
+- **[API Endpoints](./API_ENDPOINTS.md)** - Complete REST API reference
+- **[Production Roadmap](./PRODUCTION_ROADMAP.md)** - Feature roadmap
 
 ## 🤝 Contributing
 
-1. Create feature branch
-2. Make changes
-3. Test thoroughly
-4. Submit pull request
+Created by **Andy** (GitHub: [@AndyBodnar](https://github.com/AndyBodnar)) and **Dev Collective**
 
-## 📝 License
+For questions or support: https://www.azdevops.io
 
-[Your License Here]
+## 📄 License
 
-## 🆘 Support
-
-- **Issues**: Create GitHub issue
-- **Documentation**: See /docs folder
-- **Email**: andy@bespokeseating.xyz
-
-## 🎯 Roadmap
-
-- [ ] Push notifications
-- [ ] SMS alerts
-- [ ] Advanced analytics dashboard
-- [ ] Mobile app (React Native)
-- [ ] Driver ratings system
-- [ ] Automated job assignment
-- [ ] Route optimization AI
-
-## 💡 Tips
-
-### For Mobile Developers
-- Use provided SDK in `/mobile-sdk`
-- Follow rate limiting guidelines
-- Implement offline mode with queue
-- Handle version updates gracefully
-
-### For Admins
-- Monitor error logs daily
-- Review user issues regularly
-- Check device status for offline drivers
-- Run payroll weekly
-
-### For Maintainers
-- Keep Supabase CLI updated
-- Monitor function logs
-- Review database performance
-- Update app versions regularly
+Proprietary - 48 Hauling
 
 ---
 
-**Built By A driver For Drivers**
+**Built with ❤️ for the hauling industry**
