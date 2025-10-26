@@ -52,7 +52,7 @@ export default function UserIssuesTab() {
     }
   }
 
-  const viewIssueDetail = (issue: Issue) => {
+  const viewIssueDetail = (issue: ReportedIssue) => {
     setSelectedIssue(issue)
     setAdminNotes(issue.adminNotes || '')
     setAssignedTo(issue.assignedTo || '')
