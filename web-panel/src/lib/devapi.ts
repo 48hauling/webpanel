@@ -11,7 +11,7 @@ import type {
   TableStats, QueryResult, TableRowsResponse, TableRowsParams, AppSettings,
   UserPreferences, AuditLog, AuditLogParams, AuditStats, Message, Conversation,
   Announcement, CreateAnnouncementData, UpdateAnnouncementData, Dvir,
-  CreateDvirData, UpdateDvirData
+  CreateDvirData, UpdateDvirData, DeviceStatus, Notification
 } from '@/types/api';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.azdevops.io/api';
