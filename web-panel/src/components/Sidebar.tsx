@@ -86,19 +86,15 @@ export default function Sidebar({ activeTab, onTabChange }: SidebarProps) {
           {navigation.filter(item => item.section === 'business').map((item) => {
             const Icon = item.icon
             const isActive = activeTab === item.id
-            const isDisabled = item.disabled
 
             return (
               <button
                 key={item.id}
-                onClick={() => !isDisabled && onTabChange(item.id)}
-                disabled={isDisabled}
+                onClick={() => onTabChange(item.id)}
                 className={`
                   w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg transition-colors
                   ${isActive
                     ? 'bg-green-600 text-white'
-                    : isDisabled
-                    ? 'text-gray-600 cursor-not-allowed'
                     : 'text-gray-400 hover:bg-[#0f0f0f] hover:text-white'
                   }
                   ${collapsed ? 'justify-center' : ''}
@@ -107,9 +103,6 @@ export default function Sidebar({ activeTab, onTabChange }: SidebarProps) {
               >
                 <Icon className={`${collapsed ? 'w-5 h-5' : 'w-5 h-5 flex-shrink-0'}`} />
                 {!collapsed && <span className="text-sm font-medium">{item.name}</span>}
-                {!collapsed && isDisabled && (
-                  <span className="ml-auto text-xs bg-gray-800 px-2 py-0.5 rounded">Soon</span>
-                )}
               </button>
             )
           })}
@@ -152,19 +145,15 @@ export default function Sidebar({ activeTab, onTabChange }: SidebarProps) {
           {navigation.filter(item => item.section === 'technical').map((item) => {
             const Icon = item.icon
             const isActive = activeTab === item.id
-            const isDisabled = item.disabled
 
             return (
               <button
                 key={item.id}
-                onClick={() => !isDisabled && onTabChange(item.id)}
-                disabled={isDisabled}
+                onClick={() => onTabChange(item.id)}
                 className={`
                   w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg transition-colors
                   ${isActive
                     ? 'bg-green-600 text-white'
-                    : isDisabled
-                    ? 'text-gray-600 cursor-not-allowed'
                     : 'text-gray-400 hover:bg-[#0f0f0f] hover:text-white'
                   }
                   ${collapsed ? 'justify-center' : ''}
@@ -173,9 +162,6 @@ export default function Sidebar({ activeTab, onTabChange }: SidebarProps) {
               >
                 <Icon className={`${collapsed ? 'w-5 h-5' : 'w-5 h-5 flex-shrink-0'}`} />
                 {!collapsed && <span className="text-sm font-medium">{item.name}</span>}
-                {!collapsed && isDisabled && (
-                  <span className="ml-auto text-xs bg-gray-800 px-2 py-0.5 rounded">Soon</span>
-                )}
               </button>
             )
           })}
@@ -191,19 +177,15 @@ export default function Sidebar({ activeTab, onTabChange }: SidebarProps) {
           {navigation.filter(item => item.section === 'future').map((item) => {
             const Icon = item.icon
             const isActive = activeTab === item.id
-            const isDisabled = item.disabled
 
             return (
               <button
                 key={item.id}
-                onClick={() => !isDisabled && onTabChange(item.id)}
-                disabled={isDisabled}
+                onClick={() => onTabChange(item.id)}
                 className={`
                   w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg transition-colors
                   ${isActive
                     ? 'bg-green-600 text-white'
-                    : isDisabled
-                    ? 'text-gray-600 cursor-not-allowed'
                     : 'text-gray-400 hover:bg-[#0f0f0f] hover:text-white'
                   }
                   ${collapsed ? 'justify-center' : ''}
@@ -212,9 +194,6 @@ export default function Sidebar({ activeTab, onTabChange }: SidebarProps) {
               >
                 <Icon className={`${collapsed ? 'w-5 h-5' : 'w-5 h-5 flex-shrink-0'}`} />
                 {!collapsed && <span className="text-sm font-medium">{item.name}</span>}
-                {!collapsed && isDisabled && (
-                  <span className="ml-auto text-xs bg-gray-800 px-2 py-0.5 rounded">Soon</span>
-                )}
               </button>
             )
           })}
